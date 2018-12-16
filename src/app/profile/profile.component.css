@@ -1,0 +1,73 @@
+::ng-deep.profile .profile-card {
+  margin: 15px;
+}
+
+::ng-deep.profile .edit-content {
+  display: flex;
+  flex-direction: row;
+}
+
+::ng-deep.profile .edit-content .edit-child {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+}
+
+::ng-deep.profile .edit-content .edit-child .edit-child-title {
+  color: #002561;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+::ng-deep.profile .edit-content .edit-child .checkbox-section {
+  margin-bottom: 10px;
+}
+
+::ng-deep.profile .edit-content .edit-child .checkbox-section .mat-checkbox {
+  margin-right: 10px;
+}
+
+::ng-deep.profile .edit-content .edit-child .item-data {
+  color: #0025F7;
+  margin-left: 10px;
+}
+
+::ng-deep.profile .edit-content .edit-child .mat-list-item-content {
+  padding: 0;
+}
+
+::ng-deep.profile .edit-content .edit-child .mat-expansion-panel {
+  margin: 3px 0;
+}
+
+::ng-deep.profile .edit-content .edit-child .expansion-header {
+  display: flex;
+  flex-direction: row;
+}
+
+::ng-deep.profile .edit-content .edit-child .logo-image {
+  height: 42px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+::ng-deep.profile .edit-content .edit-child .expansion-header .name-title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  align-items: center;
+}
+
+::ng-deep.profile .edit-content .edit-child .edit-button {
+  position: absolute;
+  right: 16px;
+  height: fit-content;
+  width: fit-content;
+
+}
+
+::ng-deep.profile .edit-content .edit-child .mat-expansion-panel-body {
+  position: relative;
+}

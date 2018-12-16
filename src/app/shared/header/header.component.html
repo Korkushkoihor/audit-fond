@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <img src="/assets/small-logo.png" alt="" class="header-logo">
+  <span routerLink="/" class="pointer">Audit-Fond</span>
+  <a *ngIf="!isLoggedIn" class="log-in-part" [routerLink]="'/login'">
+    Log In
+  </a>
+  <div *ngIf="isLoggedIn" class="log-in-part">
+    <span routerLink="/profile" class="pointer">Hello Igor Korkushko</span>,
+    <button routerLink="/login" mat-button>sign out</button>
+  </div>
+</mat-toolbar>

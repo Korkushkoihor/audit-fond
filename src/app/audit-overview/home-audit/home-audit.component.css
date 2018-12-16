@@ -1,0 +1,34 @@
+.mat-card-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #002561;
+}
+
+.mat-card-content {
+  font-size: 20px;
+}
+
+.logo-faculty {
+  height: 158px;
+  width: 150px;
+  object-fit: contain;
+}
+
+.vertical-separator {
+  height: 158px;
+  background-color: #e7e7e7;
+  width: 3px;
+  margin: 0 15px;
+}
+
+.detail-item {
+  margin: 5px 0;
+}
+
+.detail-data {
+  color: #0025F7;
+}
+
+.faculty-card {
+  margin: 20px;
+}

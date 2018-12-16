@@ -1,0 +1,53 @@
+<mat-card class="faculty-card">
+  <div class="center-row">
+    <img class="logo-faculty" src="{{currentFaculty?.Logo}}" alt="logo-{{currentFaculty?.Name}}"
+         class="logo">
+    <mat-card-title>{{currentFaculty?.Name}}</mat-card-title>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Contact Info
+      </mat-expansion-panel-header>
+      <mat-panel-description class="disp-flex-in-column">
+        <div class="item-detail" *ngIf="currentFaculty?.Sections.length && currentFaculty?.Sections[0].Address">Address:
+          <span
+            class="item-data">{{currentFaculty?.Sections[0].Address}}</span></div>
+        <div class="item-detail">Phone: <span class="item-data">{{currentFaculty?.Phone}}</span></div>
+        <div class="item-detail">Web site: <a href="http://{{currentFaculty?.WebSite}}" class="item-data">{{currentFaculty?.WebSite}}</a>
+        </div>
+        <div class="item-detail">Email: <a href="mailto:{{currentFaculty?.Email}}" class="item-data">{{currentFaculty?.Email}}</a>
+        </div>
+        <div class="item-detail">Total Auditories Square: <span class="item-data">{{currentFaculty?.TotalSquare}} m<sup>2</sup></span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel>
+
+  </div>
+
+  <div class="auditory-list">
+    <mat-expansion-panel *ngFor="let item of currentFaculty?.Auditories" class="auditory-list-panel">
+      <mat-expansion-panel-header>
+        {{item?.Name}}, {{item?.TypeAuditoriumId | typeAuditory}}
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+        <mat-list>
+          <mat-list-item> Number auditory:
+            <div class="item-data">{{item?.NumberAuditory}}</div>
+          </mat-list-item>
+          <mat-list-item> Square:
+            <div class="item-data">{{item?.Square}}</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="item?.IsMagnetBoard">
+            <div class="item-data">Include magnet Board</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="item?.IsProjector">
+            <div class="item-data">Include Projector</div>
+          </mat-list-item>
+        </mat-list>
+
+      </mat-panel-description>
+    </mat-expansion-panel>
+  </div>
+
+
+</mat-card>

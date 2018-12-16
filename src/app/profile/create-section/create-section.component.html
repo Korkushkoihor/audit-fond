@@ -1,0 +1,36 @@
+<mat-card class="profile-card">
+  <mat-card-title>Section Editing</mat-card-title>
+  <mat-card-content class="edit-content">
+    <div class="edit-child">
+      <mat-expansion-panel *ngFor="let item of allSections" class="list-items">
+        <mat-expansion-panel-header>
+          {{item?.Name}}, fuculties count - {{item?.FacultyCount}}
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+          <img (click)="editSection(item)" class="edit-button pointer" src="assets/baseline-create-24px.svg">
+          <mat-list>
+            <mat-list-item> Address:
+              <div class="item-data">{{item?.Address}}</div>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </div>
+    <form (submit)="submitSection()" class="edit-child" [formGroup]="sectionGroup">
+      <span class="edit-child-title">Create New Section</span>
+
+      <mat-form-field>
+        <input [(ngModel)]="nameField" formControlName="name" matInput placeholder="Name" name="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="addressField" formControlName="address" matInput placeholder="Address" name="address">
+      </mat-form-field>
+
+      <button *ngIf="!isEdit" type="submit" mat-raised-button color="primary">SAVE</button>
+      <button *ngIf="isEdit" type="submit" mat-raised-button color="primary">UPDATE</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+.mat-toolbar {
+  background-color: #002561;
+}
+
+.mat-toolbar .header-logo {
+  height: 29px;
+  width: 129px;
+}
+
+.mat-toolbar span {
+  margin-left: 20px;
+  color: #fefefe;
+}
+
+.log-in-part {
+  width: 100%;
+  text-align: right;
+  color: #fefefe;
+}

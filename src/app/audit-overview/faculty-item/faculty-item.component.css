@@ -1,0 +1,45 @@
+.faculty-card {
+  display: flex !important;
+  flex-direction: row;
+  align-items: flex-start;
+  min-height: 500px;
+}
+
+.center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.logo {
+  margin: 10px;
+}
+
+.item-detail {
+  margin: 10px 0;
+}
+
+.item-data {
+  color: #0025F7;
+}
+
+.auditory-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  padding: 30px;
+}
+
+.auditory-list-panel {
+  width: 100%;
+}
+
+::ng-deep.auditory-list .mat-expansion-panel {
+  margin: 3px 0;
+}

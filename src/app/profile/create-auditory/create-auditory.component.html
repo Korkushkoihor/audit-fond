@@ -1,0 +1,93 @@
+<mat-card class="profile-card">
+  <mat-card-title>Auditory Editing</mat-card-title>
+  <mat-card-content class="edit-content">
+    <mat-list class="edit-child">
+      <mat-expansion-panel *ngFor="let item of allAuditories" class="list-items">
+        <mat-expansion-panel-header class="expansion-header">
+          <span>{{item?.Name}}, {{item?.TypeAuditoriumId | typeAuditory}}</span>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+
+          <img class="edit-button pointer" src="assets/baseline-create-24px.svg">
+          <mat-list>
+            <mat-list-item>
+              <div class="item-detail">
+                Auditory Number: <span class="item-data">{{item?.NumberAuditory}}</span>
+              </div>
+            </mat-list-item>
+            <mat-list-item>
+              <div class="item-detail">Auditory Square: <span
+                class="item-data">{{item?.Square}} m<sup>2</sup></span>
+              </div>
+            </mat-list-item>
+            <mat-list-item>
+              <div class="item-detail">Capacity Auditory: <span
+                class="item-data">{{item?.Capacity}} persons</span>
+              </div>
+            </mat-list-item>
+            <mat-list-item>
+              <div class="item-detail">Capacity Auditory: <span
+                class="item-data">{{item?.Capacity}} persons</span>
+              </div>
+            </mat-list-item>
+
+            <span *ngIf="item?.IsMagnetBoard || item?.IsProjector"
+                  class="edit-child-title">Additions In Auditory:</span>
+
+            <mat-list-item *ngIf="item?.IsProjector">
+              <div class="item-detail">
+                <span class="item-data">Include Projector</span>
+              </div>
+            </mat-list-item>
+            <mat-list-item *ngIf="item?.IsMagnetBoard">
+              <div class="item-detail">
+                <span class="item-data">Include Magnet Board</span>
+              </div>
+            </mat-list-item>
+
+
+          </mat-list>
+
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </mat-list>
+    <form class="edit-child">
+      <span class="edit-child-title">Create New Auditory</span>
+
+      <mat-form-field>
+        <input [(ngModel)]="nameField" matInput placeholder="Name" name="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="numberAuditoryField" matInput placeholder="Number Of Auditory" name="numberAuditory">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="squareField" matInput placeholder="Square" name="square">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="capacityField" matInput placeholder="Capacity" name="capacity">
+      </mat-form-field>
+
+      <span class="edit-child-title">Select Benefits Auditory</span>
+
+      <section class="checkbox-section">
+        <mat-checkbox [(ngModel)]="isMagnetBoard" name="isMagnetDesk">Is magnet board
+        </mat-checkbox>
+        <mat-checkbox [(ngModel)]="isProjector" name="isProjector">Is projector in auditory
+        </mat-checkbox>
+      </section>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedTypeAuditory" placeholder="Select Type Auditory" name="selectedType">
+          <mat-option *ngFor="let type of auditoryTypes" value="{{type?.Id}}">{{type?.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button *ngIf="!isEdit" routerLink="/overview" type="submit" mat-raised-button color="primary">SAVE</button>
+      <button *ngIf="isEdit" routerLink="/overview" type="submit" mat-raised-button color="primary">UPDATE</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>

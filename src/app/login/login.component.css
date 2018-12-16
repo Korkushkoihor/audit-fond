@@ -1,0 +1,4 @@
+.login-page ::ng-deep .login-form {
+  display: flex;
+  flex-direction: column;
+}

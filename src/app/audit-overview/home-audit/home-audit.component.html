@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>Who we are</mat-card-title>
+
+  <mat-card-content>Audit-Overview Web site designed for revision all classes from every sections that is available.
+    With this feature you can get information about capacity, square, name and more-more ...
+  </mat-card-content>
+
+  <mat-card-title>We have information about every faculty:</mat-card-title>
+
+  <mat-card-content>
+
+    <mat-card class="faculty-card" *ngFor="let item of faculties">
+
+      <mat-card-title class="pointer" routerLink="/overview/{{item?.Id}}">
+        {{item?.Name}}
+      </mat-card-title>
+      <mat-card-content class="disp-flex-in-row">
+        <img routerLink="/overview/{{item?.Id}}" src="{{item?.Logo}}" alt="logo - {{item.Name }}"
+             class="logo-faculty pointer">
+        <div class="vertical-separator"></div>
+        <div class="detail-faculty">
+          <div class="detail-item" *ngIf="item?.Sections.length && item?.Sections[0].Address">Address: <span
+            class="detail-data">{{item?.Sections[0].Address}}</span>
+          </div>
+          <div class="detail-item">Phone: <span class="detail-data">{{item?.Phone}}</span></div>
+          <div class="detail-item">Web site: <a href="http://{{item?.WebSite}}" target="_blank" class="detail-data">{{item?.WebSite}}</a>
+          </div>
+          <div class="detail-item">Email: <a href="mailto:{{item?.Email}}" class="detail-data">{{item?.Email}}</a></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-card-content>
+</mat-card>
