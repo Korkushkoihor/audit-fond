@@ -5,7 +5,7 @@
     Log In
   </a>
   <div *ngIf="isLoggedIn" class="log-in-part">
-    <span routerLink="/profile" class="pointer">Hello Igor Korkushko</span>,
-    <button routerLink="/login" mat-button>sign out</button>
+    <span routerLink="/profile" class="pointer">{{userName}}</span>,
+    <button (click)="logout()" mat-button>sign out</button>
   </div>
 </mat-toolbar>

@@ -19,8 +19,8 @@ export class SectionService {
     return (this.configService.getConfig(`/Section/GetById(${id})`) as Observable<Section>);
   }
 
-  public postSection(): Observable<Section> {
-    return (this.configService.getConfig(`/Section/Create`) as Observable<Section>);
+  public postSection(section: Section): Observable<Section> {
+    return (this.configService.postConfig(`/Section/Create`, section) as Observable<Section>);
   }
 
   public putSection(section: Section): Observable<Section> {

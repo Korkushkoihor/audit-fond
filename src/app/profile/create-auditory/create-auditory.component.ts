@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataStorageService} from '../../services/data-storage.service';
 import {TypeAuditory} from '../../models/TypeAuditory.model';
 import {Auditory} from '../../models/Auditory.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-create-auditory',
@@ -24,6 +25,10 @@ export class CreateAuditoryComponent implements OnInit {
 
   allAuditories: Auditory[];
 
+  private facultySubscription: Subscription = null;
+  private auditorySubscription: Subscription = null;
+  private sectionSubscription: Subscription = null;
+
   constructor(private dataStorageService: DataStorageService) {
   }
 
@@ -32,9 +37,10 @@ export class CreateAuditoryComponent implements OnInit {
       this.auditoryTypes = types;
     });
 
-    this.dataStorageService.getAllAuditories().subscribe((allAuditories: Auditory[]) => {
-      this.allAuditories = allAuditories;
+    this.auditorySubscription = this.dataStorageService.auditoriesSubscription.subscribe((auditories: Auditory[]) => {
+      this.allAuditories = auditories;
     });
+
   }
 
 }

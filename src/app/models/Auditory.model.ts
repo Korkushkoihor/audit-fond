@@ -1,11 +1,11 @@
 export class Auditory {
   Id: string;
-  NumberAuditory: number;
+  RoomNumber: number;
   Name: string;
   Square: number;
   FacultyId: string;
   Capacity: number;
-  TypeAuditoriumId: string;
+  RoomTypeId: string;
   IsProjector?: boolean;
   IsMagnetBoard?: boolean;
   IsPlatform?: boolean;

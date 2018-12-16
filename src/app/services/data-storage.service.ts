@@ -22,11 +22,6 @@ export class DataStorageService {
               private sectionSecvice: SectionService,
               private auditoryService: AuditoryService,
               private facultyService: FacultyService) {
-    this.mockSevrice.getSections().subscribe((sections: Section[]) => {
-      setTimeout(() => {
-        this.sectionsSubscription.next(sections);
-      }, 200);
-    });
   }
 
   public setFacultiesData(faculties: Faculty[]) {
@@ -36,32 +31,8 @@ export class DataStorageService {
     }
   }
 
-  public getFacultiesData(): Observable<Faculty[]> {
-    return this.mockSevrice.getFaculties();
-  }
-
-  public getSectionsList(): Observable<Section[]> {
-    return this.mockSevrice.getSections();
-  }
-
-  public addSection(section: Section): void {
-    this.mockSevrice.addSection(section).subscribe((sections: Section[]) => {
-      this.sectionsSubscription.next(sections);
-    });
-  }
-
-  public updateSectionById(section: Section): void {
-    this.mockSevrice.updateSection(section).subscribe((sections: Section[]) => {
-      this.sectionsSubscription.next(sections);
-    });
-  }
-
   public getTypesAuditories(): Observable<TypeAuditory[]> {
     return this.mockSevrice.getTypesAuditories();
-  }
-
-  public getAllAuditories(): Observable<Auditory[]> {
-    return this.mockSevrice.getAllAuditories();
   }
 
   public updateAllData(): void {

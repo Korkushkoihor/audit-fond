@@ -2,18 +2,24 @@
   <mat-card-title>Log in</mat-card-title>
 
   <mat-card-content>
-    <form class="login-form">
+    <form [formGroup]="loginGroup" (submit)="submitLogin()" class="login-form">
+
+      <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 
       <mat-form-field class="form-item">
-        <input matInput placeholder="Email" placeHolder="Email" type="email">
+        <input (focus)="errorMessage = ''" [(ngModel)]="emailField" formControlName="email" name="email" matInput
+               placeholder="Email"
+               type="email">
       </mat-form-field>
 
       <mat-form-field class="form-item hint-forgot">
-        <input matInput placeholder="Password" placeHolder="Password" type="password">
+        <input (focus)="errorMessage = ''" [(ngModel)]="passwordField" formControlName="password" name="password"
+               matInput placeholder="Password"
+               type="password">
         <mat-hint align="start"><a routerLink="/login/forgot-pass">forgot password</a></mat-hint>
       </mat-form-field>
 
-      <button routerLink="/overview" type="submit" mat-raised-button color="primary">log in</button>
+      <button type="submit" mat-raised-button color="primary">log in</button>
 
     </form>
   </mat-card-content>

@@ -3,6 +3,7 @@ import {Section} from '../../models/Section.model';
 import {DataStorageService} from '../../services/data-storage.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
+import {SectionService} from '../../services/section.service';
 
 @Component({
   selector: 'app-create-section',
@@ -26,6 +27,7 @@ export class CreateSectionComponent implements OnInit {
   private sectionSubscription: Subscription = null;
 
   constructor(private dataStorageService: DataStorageService,
+              private sectionService: SectionService,
               private fb: FormBuilder) {
   }
 
@@ -36,12 +38,16 @@ export class CreateSectionComponent implements OnInit {
   }
 
   public submitSection() {
-    alert('submittedUser');
-
-    if (this.isEdit) {
-      this.dataStorageService.updateSectionById({Id: this.currentEditId, Name: this.nameField, Address: this.addressField});
-    } else {
-      this.dataStorageService.addSection({Name: this.nameField, Address: this.addressField});
+    if (this.sectionGroup.valid) {
+      if (this.isEdit) {
+        this.sectionService.putSection({Id: this.currentEditId, Name: this.nameField, Address: this.addressField}).subscribe(resp => {
+          debugger;
+        });
+      } else {
+        this.sectionService.postSection({Name: this.nameField, Address: this.addressField}).subscribe(resp => {
+          debugger;
+        });
+      }
     }
   }
 

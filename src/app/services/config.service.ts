@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class ConfigService {
 
-  private apiUrl = 'localhost';
+  public apiUrl = 'http://localhost:49981/api';
 
   constructor(private httpClient: HttpClient) {
   }

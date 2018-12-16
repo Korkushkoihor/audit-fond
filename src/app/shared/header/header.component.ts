@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +11,22 @@ import {AuthService} from '../../services/auth.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
 
-  constructor(private authService: AuthService) {
+  userName = '';
+
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.isLoggedIn = this.authService.getIsUserLoggedIn();
+      this.userName = this.authService.getUserName();
+    });
+  }
 
+  logout() {
   }
 
 }

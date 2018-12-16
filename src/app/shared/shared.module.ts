@@ -36,7 +36,6 @@ import {BrowserModule} from '@angular/platform-browser';
   providers: [
     MockService,
     ConfigService,
-    AuthService,
     CanActivateService
   ]
 })

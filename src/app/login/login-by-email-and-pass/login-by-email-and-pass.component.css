@@ -6,3 +6,9 @@
 .form-item.hint-forgot {
   margin-bottom: 15px;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 20px;
+}

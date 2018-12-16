@@ -25,13 +25,14 @@
                 class="item-data">{{item?.Capacity}} persons</span>
               </div>
             </mat-list-item>
+
             <mat-list-item>
               <div class="item-detail">Capacity Auditory: <span
                 class="item-data">{{item?.Capacity}} persons</span>
               </div>
             </mat-list-item>
 
-            <span *ngIf="item?.IsMagnetBoard || item?.IsProjector"
+            <span *ngIf="item?.IsMagnetBoard || item?.IsProjector || item?.IsPlatform"
                   class="edit-child-title">Additions In Auditory:</span>
 
             <mat-list-item *ngIf="item?.IsProjector">
@@ -39,12 +40,18 @@
                 <span class="item-data">Include Projector</span>
               </div>
             </mat-list-item>
+
             <mat-list-item *ngIf="item?.IsMagnetBoard">
               <div class="item-detail">
                 <span class="item-data">Include Magnet Board</span>
               </div>
             </mat-list-item>
 
+            <mat-list-item *ngIf="item?.IsPlatform">
+              <div class="item-detail">
+                <span class="item-data">Include Platform</span>
+              </div>
+            </mat-list-item>
 
           </mat-list>
 
@@ -77,10 +84,24 @@
         </mat-checkbox>
         <mat-checkbox [(ngModel)]="isProjector" name="isProjector">Is projector in auditory
         </mat-checkbox>
+        <mat-checkbox [(ngModel)]="isProjector" name="isProjector">Is platform
+        </mat-checkbox>
       </section>
 
       <mat-form-field>
         <mat-select [(ngModel)]="selectedTypeAuditory" placeholder="Select Type Auditory" name="selectedType">
+          <mat-option *ngFor="let type of auditoryTypes" value="{{type?.Id}}">{{type?.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedSections" placeholder="Select Section" name="selectedType">
+          <mat-option *ngFor="let type of Sections" value="{{type?.Id}}">{{type?.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedFaculties" placeholder="Select Type Auditory" name="selectedType">
           <mat-option *ngFor="let type of auditoryTypes" value="{{type?.Id}}">{{type?.Name}}</mat-option>
         </mat-select>
       </mat-form-field>
