@@ -8,6 +8,7 @@
         </mat-expansion-panel-header>
         <mat-panel-description>
           <img (click)="editSection(item)" class="edit-button pointer" src="assets/baseline-create-24px.svg">
+          <img (click)="deleteSection(item)" class="clear-button pointer" src="assets/baseline-clear-24px.svg">
           <mat-list>
             <mat-list-item> Address:
               <div class="item-data">{{item?.Address}}</div>
@@ -18,6 +19,8 @@
       </mat-expansion-panel>
     </div>
     <form (submit)="submitSection()" class="edit-child" [formGroup]="sectionGroup">
+      <img *ngIf="isEdit" (click)="cancelEdit()" class="clear-button pointer" src="assets/baseline-clear-24px.svg">
+
       <span class="edit-child-title">Create New Section</span>
 
       <mat-form-field>

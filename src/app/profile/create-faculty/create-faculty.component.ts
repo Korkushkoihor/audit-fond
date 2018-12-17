@@ -18,13 +18,13 @@ export class CreateFacultyComponent implements OnInit, OnDestroy {
   emailField: string;
   phoneField: string;
   webSiteField: string;
-
   sections: Section[];
   selectedSection = [];
 
   allFaculties: Faculty[];
 
   private facultySubscription: Subscription = null;
+
   // private auditoriesSubscription: Subscription = null;
 
   constructor(private dataStorageService: DataStorageService) {
@@ -48,10 +48,22 @@ export class CreateFacultyComponent implements OnInit, OnDestroy {
     // });
   }
 
+
   ngOnDestroy() {
     if (this.facultySubscription) {
       this.facultySubscription.unsubscribe();
     }
+  }
+
+  public cancelEdit() {
+    this.nameField = '';
+    this.logoField = '';
+    this.emailField = '';
+    this.phoneField = '';
+    this.webSiteField = '';
+    this.sections = [];
+    this.selectedSection = [];
+    this.isEdit = false;
   }
 
 }

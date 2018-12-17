@@ -10,7 +10,7 @@ import {TypeAuditoryPipe} from '../pipes/type-auditory.pipe';
 import {AuthService} from '../services/auth.service';
 import {CanActivateService} from '../services/can-activate.service';
 import {ConfigService} from '../services/config.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({

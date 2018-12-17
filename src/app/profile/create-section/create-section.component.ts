@@ -41,19 +41,32 @@ export class CreateSectionComponent implements OnInit {
     if (this.sectionGroup.valid) {
       if (this.isEdit) {
         this.sectionService.putSection({Id: this.currentEditId, Name: this.nameField, Address: this.addressField}).subscribe(resp => {
-          debugger;
+          this.allSections[this.allSections.findIndex(el => el.Id === resp.Id)] = resp;
+          this.cancelEdit();
+          this.sectionGroup.reset({name: this.nameField, address: this.addressField});
         });
       } else {
-        this.sectionService.postSection({Name: this.nameField, Address: this.addressField}).subscribe(resp => {
-          debugger;
+        this.sectionService.postSection({Name: this.nameField, Address: this.addressField}).subscribe((section: Section) => {
+          this.allSections.push(section);
+          this.cancelEdit();
+          this.sectionGroup.reset({name: this.nameField, address: this.addressField});
         });
       }
+    }
+  }
+
+  public deleteSection(item: Section) {
+    if (confirm('Press a button!')) {
+      this.sectionService.deleteSection(item.Id).subscribe(() => {
+        this.allSections.slice(this.allSections.findIndex(el => el.Id === item.Id), 1);
+      });
     }
   }
 
   public editSection(item: Section) {
     this.addressField = item.Address;
     this.nameField = item.Name;
+    this.currentEditId = item.Id;
     this.isEdit = true;
   }
 

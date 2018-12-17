@@ -9,9 +9,10 @@
         Contact Info
       </mat-expansion-panel-header>
       <mat-panel-description class="disp-flex-in-column">
-        <div class="item-detail" *ngIf="currentFaculty?.Sections.length && currentFaculty?.Sections[0].Address">Address:
+        <div class="item-detail">Address:
           <span
-            class="item-data">{{currentFaculty?.Sections[0].Address}}</span></div>
+            class="item-data"
+            *ngFor="let item of currentFaculty?.Sections">{{item?.Name}} - {{item?.Address}} <br/> </span></div>
         <div class="item-detail">Phone: <span class="item-data">{{currentFaculty?.Phone}}</span></div>
         <div class="item-detail">Web site: <a href="http://{{currentFaculty?.WebSite}}" class="item-data">{{currentFaculty?.WebSite}}</a>
         </div>

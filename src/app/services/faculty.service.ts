@@ -16,7 +16,7 @@ export class FacultyService {
   }
 
   public getFacultyById(id: string): Observable<Faculty> {
-    return (this.configService.getConfig(`/Faculty/GetById(${id})`) as Observable<Faculty>);
+    return (this.configService.getConfig(`/Faculty/GetById?Id=${id}`) as Observable<Faculty>);
   }
 
   public postFaculty(): Observable<Faculty> {
@@ -28,6 +28,6 @@ export class FacultyService {
   }
 
   public deleteFaculty(id: string): Observable<boolean> {
-    return this.configService.deleteConfig('/Faculty/Delete');
+    return this.configService.deleteConfig('/Faculty/Delete', id);
   }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class ConfigService {
 
   public apiUrl = 'http://localhost:49981/api';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private router: Router) {
   }
 
   public getConfig(url): Observable<any> {
@@ -20,12 +22,12 @@ export class ConfigService {
     return this.httpClient.post(this.apiUrl + url, obj, {headers: this.generateHeaders()});
   }
 
-  public deleteConfig(url): Observable<any> {
-    return this.httpClient.delete(url, {headers: this.generateHeaders()});
+  public deleteConfig(url, id): Observable<any> {
+    return this.httpClient.delete(this.apiUrl + url + `?Id=${id}`, {headers: this.generateHeaders()});
   }
 
   public putConfig(url, obj): Observable<any> {
-    return this.httpClient.put(url, obj, {headers: this.generateHeaders()});
+    return this.httpClient.put(this.apiUrl + url, obj, {headers: this.generateHeaders()});
   }
 
   private generateHeaders() {

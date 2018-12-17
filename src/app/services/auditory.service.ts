@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ConfigService} from './config.service';
 import {Observable} from 'rxjs';
-import {Faculty} from '../models/Faculty.model';
 import {Auditory} from '../models/Auditory.model';
 
 @Injectable({
@@ -29,6 +28,6 @@ export class AuditoryService {
   }
 
   public deleteAuditory(id: string): Observable<boolean> {
-    return this.configService.deleteConfig('/Room/Delete');
+    return this.configService.deleteConfig('/Room/Delete', id);
   }
 }

@@ -3,6 +3,7 @@ import {DataStorageService} from '../../services/data-storage.service';
 import {Faculty} from '../../models/Faculty.model';
 import {Subscription} from 'rxjs';
 import {AuditOverviewService} from '../../services/audit-overview.service';
+import {FacultyService} from '../../services/faculty.service';
 
 @Component({
   selector: 'app-home-audit',
@@ -14,13 +15,20 @@ export class HomeAuditComponent implements OnInit, OnDestroy {
   private facultiesSubscription: Subscription;
 
   constructor(private dataStorageService: DataStorageService,
-              private auditOverviewService: AuditOverviewService) {
+              private auditOverviewService: AuditOverviewService,
+              private facultyService: FacultyService) {
   }
 
   ngOnInit() {
 
     this.facultiesSubscription = this.dataStorageService.facultiesSubscription.subscribe((res: Faculty[]) => {
       this.faculties = res;
+    });
+
+    debugger;
+    this.facultyService.getAllFaculties().subscribe((faculties: Faculty[]) => {
+      this.faculties = faculties;
+      debugger;
     });
 
     this.auditOverviewService.getAllFaculties().subscribe((response) => {

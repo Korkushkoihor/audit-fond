@@ -19,6 +19,8 @@ export class CreateAuditoryComponent implements OnInit {
   capacityField: number;
   isMagnetBoard = false;
   isProjector = false;
+  isPlatform = false;
+
 
   auditoryTypes: TypeAuditory[] = [];
   selectedTypeAuditory = [];
@@ -41,6 +43,24 @@ export class CreateAuditoryComponent implements OnInit {
       this.allAuditories = auditories;
     });
 
+  }
+
+  public deleteAuditory() {
+    if (confirm("Press a button!")) {
+
+    } else {
+    }
+  }
+
+  public cancelEdit() {
+    this.nameField = '';
+    this.numberAuditoryField = 0;
+    this.squareField = 0;
+    this.capacityField = 0;
+    this.isMagnetBoard = false;
+    this.isProjector = false;
+    this.isPlatform = false;
+    this.isEdit = false;
   }
 
 }

@@ -11,6 +11,7 @@
         </mat-expansion-panel-header>
         <mat-panel-description>
           <img class="edit-button pointer" src="assets/baseline-create-24px.svg">
+          <img class="clear-button pointer" src="assets/baseline-clear-24px.svg">
           <mat-list>
             <mat-list-item>
               <div class="item-detail" *ngIf="item?.Sections.length && item?.Sections[0].Address">
@@ -41,6 +42,8 @@
       </mat-expansion-panel>
     </mat-list>
     <form class="edit-child">
+      <img *ngIf="isEdit" (click)="cancelEdit()" class="clear-button pointer" src="assets/baseline-clear-24px.svg">
+
       <span class="edit-child-title">Create New Faculty</span>
 
       <mat-form-field>

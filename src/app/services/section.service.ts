@@ -28,6 +28,6 @@ export class SectionService {
   }
 
   public deleteSection(id: string): Observable<boolean> {
-    return this.configService.deleteConfig('/Section/Delete');
+    return this.configService.deleteConfig('/Section/Delete', id);
   }
 }
