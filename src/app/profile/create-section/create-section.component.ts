@@ -42,14 +42,14 @@ export class CreateSectionComponent implements OnInit {
       if (this.isEdit) {
         this.sectionService.putSection({Id: this.currentEditId, Name: this.nameField, Address: this.addressField}).subscribe(resp => {
           this.allSections[this.allSections.findIndex(el => el.Id === resp.Id)] = resp;
+          this.dataStorageService.sectionsSubscription.next(this.allSections);
           this.cancelEdit();
-          this.sectionGroup.reset({name: this.nameField, address: this.addressField});
         });
       } else {
         this.sectionService.postSection({Name: this.nameField, Address: this.addressField}).subscribe((section: Section) => {
           this.allSections.push(section);
+          this.dataStorageService.sectionsSubscription.next(this.allSections);
           this.cancelEdit();
-          this.sectionGroup.reset({name: this.nameField, address: this.addressField});
         });
       }
     }
@@ -58,7 +58,8 @@ export class CreateSectionComponent implements OnInit {
   public deleteSection(item: Section) {
     if (confirm('Press a button!')) {
       this.sectionService.deleteSection(item.Id).subscribe(() => {
-        this.allSections.slice(this.allSections.findIndex(el => el.Id === item.Id), 1);
+        this.allSections.splice(this.allSections.findIndex(el => el.Id === item.Id), 1);
+        this.dataStorageService.sectionsSubscription.next(this.allSections);
       });
     }
   }
@@ -74,5 +75,6 @@ export class CreateSectionComponent implements OnInit {
     this.addressField = '';
     this.nameField = '';
     this.isEdit = false;
+    this.sectionGroup.reset({name: this.nameField, address: this.addressField});
   }
 }

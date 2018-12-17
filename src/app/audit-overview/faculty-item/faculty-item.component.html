@@ -28,21 +28,27 @@
   <div class="auditory-list">
     <mat-expansion-panel *ngFor="let item of currentFaculty?.Auditories" class="auditory-list-panel">
       <mat-expansion-panel-header>
-        {{item?.Name}}, {{item?.TypeAuditoriumId | typeAuditory}}
+        {{item?.Name}}, {{item?.RoomTypeId | typeAuditory}}
       </mat-expansion-panel-header>
       <mat-panel-description>
         <mat-list>
           <mat-list-item> Number auditory:
-            <div class="item-data">{{item?.NumberAuditory}}</div>
+            <div class="item-data">{{item?.RoomNumber}}</div>
           </mat-list-item>
           <mat-list-item> Square:
             <div class="item-data">{{item?.Square}}</div>
+          </mat-list-item>
+          <mat-list-item> Capacity:
+            <div class="item-data">{{item?.Capacity}}</div>
           </mat-list-item>
           <mat-list-item *ngIf="item?.IsMagnetBoard">
             <div class="item-data">Include magnet Board</div>
           </mat-list-item>
           <mat-list-item *ngIf="item?.IsProjector">
             <div class="item-data">Include Projector</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="item?.IsPlatform">
+            <div class="item-data">Include Platform</div>
           </mat-list-item>
         </mat-list>
 

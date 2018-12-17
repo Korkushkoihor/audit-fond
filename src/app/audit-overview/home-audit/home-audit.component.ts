@@ -25,10 +25,8 @@ export class HomeAuditComponent implements OnInit, OnDestroy {
       this.faculties = res;
     });
 
-    debugger;
     this.facultyService.getAllFaculties().subscribe((faculties: Faculty[]) => {
       this.faculties = faculties;
-      debugger;
     });
 
     this.auditOverviewService.getAllFaculties().subscribe((response) => {

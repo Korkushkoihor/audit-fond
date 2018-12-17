@@ -10,8 +10,8 @@
           <span class="name-title">{{item?.Name}}</span>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <img class="edit-button pointer" src="assets/baseline-create-24px.svg">
-          <img class="clear-button pointer" src="assets/baseline-clear-24px.svg">
+          <img (click)="editFaculty(item)" class="edit-button pointer" src="assets/baseline-create-24px.svg">
+          <img (click)="deleteFaculty(item)" class="clear-button pointer" src="assets/baseline-clear-24px.svg">
           <mat-list>
             <mat-list-item>
               <div class="item-detail" *ngIf="item?.Sections.length && item?.Sections[0].Address">
@@ -41,35 +41,37 @@
         </mat-panel-description>
       </mat-expansion-panel>
     </mat-list>
-    <form class="edit-child">
+    <form [formGroup]="facultyGroup" (submit)="submitFaculty()" class="edit-child">
       <img *ngIf="isEdit" (click)="cancelEdit()" class="clear-button pointer" src="assets/baseline-clear-24px.svg">
 
       <span class="edit-child-title">Create New Faculty</span>
 
       <mat-form-field>
-        <input [(ngModel)]="nameField" matInput placeholder="Name" name="name">
+        <input formControlName="name" [(ngModel)]="nameField" matInput placeholder="Name" name="name">
       </mat-form-field>
 
       <mat-form-field>
-        <input [(ngModel)]="logoField" matInput placeholder="Type image url" name="logo">
+        <input formControlName="logo" [(ngModel)]="logoField" matInput placeholder="Type image url" name="logo">
       </mat-form-field>
 
       <mat-form-field>
-        <input [(ngModel)]="emailField" matInput placeholder="Email" name="email">
+        <input formControlName="email" [(ngModel)]="emailField" matInput placeholder="Email" name="email">
       </mat-form-field>
 
       <mat-form-field>
-        <input [(ngModel)]="phoneField" matInput placeholder="Phone" name="phone">
+        <input formControlName="phone" [(ngModel)]="phoneField" matInput placeholder="Phone" name="phone">
       </mat-form-field>
 
       <mat-form-field>
-        <input [(ngModel)]="webSiteField" matInput placeholder="Web Site" name="webSite">
+        <input formControlName="webSite" [(ngModel)]="webSiteField" matInput placeholder="Web Site" name="webSite">
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="selectedSection" [multiple]="true" placeholder="Select Sections"
-                    name="selectedSection">
-          <mat-option *ngFor="let section of sections" value="{{section?.Id}}">{{section?.Name}}</mat-option>
+        <mat-select formControlName="selectedSections" [(ngModel)]="selectedSection" [multiple]="true" placeholder="Select Sections"
+          name="selectedSection">
+          <mat-option *ngFor="let section of sections" value="{{section?.Id}}">
+            {{section?.Name}} - {{section?.Address}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 

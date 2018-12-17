@@ -22,7 +22,6 @@ export class FacultyItemComponent implements OnInit {
       this.currentId = params['id'];
       this.facultyService.getFacultyById(this.currentId).subscribe((faculty: Faculty) => {
         this.currentFaculty = faculty;
-        debugger;
       });
     });
   }
